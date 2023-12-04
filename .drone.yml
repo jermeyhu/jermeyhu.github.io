@@ -10,7 +10,7 @@ steps: # 定义流水线执行步骤，这些步骤将顺序执行
       - bundle install # 安装依赖
       - jekyll build # 打包
 
-  - name: master_build
+  - name: deploy
     image: cschlosser/drone-ftps
     environment:
       FTP_USERNAME:
@@ -20,7 +20,7 @@ steps: # 定义流水线执行步骤，这些步骤将顺序执行
       PLUGIN_HOSTNAME: 
         from_secret: ftphost
 
-      PLUGIN_SRC_DIR: ./_site/
+      PLUGIN_SRC_DIR: /_site
       PLUGIN_SECURE: false
       PLUGIN_VERIFY: false
 
