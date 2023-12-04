@@ -10,14 +10,19 @@ steps: # 定义流水线执行步骤，这些步骤将顺序执行
       - bundle install # 安装依赖
       - jekyll build # 打包
 
-  - name: build-docker
-    image: docker:dind
-    volumes:
-    - name: dockersock
-      path: /var/run/docker.sock
-    commands:
-    - docker build -t myblog . # 编译docker
-    - docker-compose up -d # 部署
+  - name: master_build
+    image: cschlosser/drone-ftps
+    environment:
+      FTP_USERNAME:
+        from_secret: ftpusername
+      FTP_PASSWORD:
+        from_secret: ftppassword
+      PLUGIN_HOSTNAME: 
+        from_secret: ftphost
+
+      PLUGIN_SRC_DIR: ./_site/
+      PLUGIN_SECURE: false
+      PLUGIN_VERIFY: false
 
 volumes:
   - name: dockersock
