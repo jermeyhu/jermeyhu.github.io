@@ -17,9 +17,9 @@ steps: # 定义流水线执行步骤，这些步骤将顺序执行
         from_secret: ftpusername
       FTP_PASSWORD:
         from_secret: ftppassword
-      PLUGIN_HOSTNAME: 
-        from_secret: ftphost
+      PLUGIN_HOSTNAME: qxu1606470352.my3w.com:21
 
+      PLUGIN_DEST_DIR: /htdocs
       PLUGIN_SRC_DIR: /_site
       PLUGIN_SECURE: false
       PLUGIN_VERIFY: false
