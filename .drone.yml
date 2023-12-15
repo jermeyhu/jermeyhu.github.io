@@ -25,6 +25,12 @@ steps: # 定义流水线执行步骤，这些步骤将顺序执行
       PLUGIN_SECURE: false
       PLUGIN_VERIFY: false
 
+  - name: push-baidu
+    image: curlimages/curl:8.5.0
+    commands:
+      - curl -H 'Content-Type:text/plain' --data-binary @urls.txt "http://data.zz.baidu.com/urls?site=https://www.jermey.cn&token=9R871d8vm7xLZw0a"
+    
+
 volumes:
   - name: dockersock
     host:
