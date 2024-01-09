@@ -32,8 +32,3 @@ steps: # 定义流水线执行步骤，这些步骤将顺序执行
       - apk add --no-cache curl
       - curl -H 'Content-Type:text/plain' --data-binary @_site/urls2.txt "http://data.zz.baidu.com/urls?site=https://www.jermey.cn&token=9R871d8vm7xLZw0a"
     
-
-volumes:
-  - name: dockersock
-    host:
-      path: /var/run/docker.sock
