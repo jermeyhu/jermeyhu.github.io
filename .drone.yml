@@ -28,7 +28,7 @@ steps: # 定义流水线执行步骤，这些步骤将顺序执行
   - name: push-baidu
     image: alpine:3.14
     commands:
-      - head -n 10 _site/urls.txt > _site/urls2.txt
+      - head -n 3 _site/urls.txt > _site/urls2.txt
       - apk add --no-cache curl
       - curl -H 'Content-Type:text/plain' --data-binary @_site/urls2.txt "http://data.zz.baidu.com/urls?site=https://www.jermey.cn&token=9R871d8vm7xLZw0a"
     

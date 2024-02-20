@@ -17,5 +17,3 @@ permalink: /friend/
 [Drone](https://drone.jermey.cn)
 
 [GoToSocial(Mastodon)](https://gts.jermey.cn/@sex)
-
-[Cloudreve](https://pan.jermey.cn)
