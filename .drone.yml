@@ -1,0 +1,34 @@
+kind: pipeline # 定义对象类型，还有secret和signature两种类型
+type: docker # 定义流水线类型，还有kubernetes、exec、ssh等类型
+name: drone-build # 定义流水线名称
+
+steps: # 定义流水线执行步骤，这些步骤将顺序执行
+  - name: build-web # 流水线名称
+    image: ruby:3.0 # 定义创建容器的Docker镜像
+    commands: # 定义在Docker容器中执行的shell命令
+      - gem install bundler:2.4.18
+      - bundle install # 安装依赖
+      - jekyll build # 打包
+
+  - name: deploy
+    image: cschlosser/drone-ftps
+    environment:
+      FTP_USERNAME:
+        from_secret: ftpusername
+      FTP_PASSWORD:
+        from_secret: ftppassword
+      PLUGIN_HOSTNAME: qxu1606470352.my3w.com:21
+
+      PLUGIN_DEST_DIR: /htdocs
+      PLUGIN_SRC_DIR: /_site
+      PLUGIN_EXCLUDE: ^\.git/$,^\.gitignore$
+      PLUGIN_SECURE: false
+      PLUGIN_VERIFY: false
+
+  - name: push-baidu
+    image: alpine:3.14
+    commands:
+      - head -n 3 _site/urls.txt > _site/urls2.txt
+      - apk add --no-cache curl
+      - curl -H 'Content-Type:text/plain' --data-binary @_site/urls2.txt "http://data.zz.baidu.com/urls?site=https://www.jermey.cn&token=9R871d8vm7xLZw0a"
+    
