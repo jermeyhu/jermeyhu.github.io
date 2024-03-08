@@ -22,12 +22,22 @@ layout: default
   <div style="width: 100%;display: grid; grid-template-columns: repeat(2, 50%);">
     <div style="text-align: right;padding-right: 20px;">
       {% if page.previous.url %}
-        <h4><a class=" button" href="{{page.previous.url}}">上一篇</a></h4>
+        <h4><a href="{{page.previous.url}}">
+          <span style="display: inline-block;overflow: hidden;">&lt;&lt;</span>
+          <span style="display: inline-block;white-space: nowrap;overflow: hidden;max-width: 80%;">
+            {{page.previous.title}}
+          </span>
+        </a></h4>
       {% endif %}
     </div>
     <div style="text-align: left;padding-left: 20px;">
       {% if page.next.url %}
-        <h4><a class=" button" href="{{page.next.url}}">下一篇</a></h4>
+        <h4><a href="{{page.next.url}}">
+          <span style="display: inline-block;white-space: nowrap;overflow: hidden;max-width: 80%;">
+            {{page.next.title}}
+          </span>
+          <span style="display: inline-block;overflow: hidden;">&gt;&gt;</span>
+      </a></h4>
       {% endif %}
     </div>
   </div>
