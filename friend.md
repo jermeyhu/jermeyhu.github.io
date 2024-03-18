@@ -14,4 +14,4 @@ permalink: /friend/
 
 [AriaNg](http://slides.jermey.cn/AriaNg.html)
 
-[GoToSocial(Mastodon)](https://gts.jermey.cn/@sex)
+[Navidrome](https://music.jermey.cn)
